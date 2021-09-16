@@ -5,7 +5,7 @@ Based on phenomenal [Loris Leiva](https://lorisleiva.com/) [Actions for Laravel]
 ## Installation
 
 ```bash
-composer require "frictionlessditial\actions":"^1.0"
+composer require "frictionlessdigital/actions":"^1.0"
 ```
 
 Note that root namespace for the package is `Fls` not `Frictionlessditial`.
