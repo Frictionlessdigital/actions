@@ -1,14 +1,16 @@
 # FLS :: Actions
 
-Based on phenomenal [Loris Leiva](https://lorisleiva.com/) [Actions for Laravel](https://laravelactions.com/), this package is just a wrapper with a few methods added to sugar-syntax it
+Based on phenomenal [Loris Leiva](https://lorisleiva.com/) [Actions for Laravel](https://laravelactions.com/), this package is just a wrapper with a few methods added to sugar-syntax it.
+
+This is for version 9.x and above, which is NOT directly compatible with 1.x. 
 
 ## Installation
 
 ```bash
-composer require "frictionlessdigital/actions":"^1.0"
+composer require "frictionlessdigital/actions":"^9.0"
 ```
 
-Note that root namespace for the package is `Fls` not `Frictionlessditial`.
+**Note that root namespace for the package is `Fls` not `Frictionlessditial`.**
 
 ### Config
 
@@ -18,37 +20,19 @@ The package does not require configuration.
 
 Read base documentation here: [Laravel Actions](https://laravelactions.com/)
 
-### `Fls\Actions\Concerns\ShouldTransact`
-
-```php
-use Fls\Actions\Action;
-use Fls\Actions\Concerns\ShouldTransact;
-
-class SimpleAction extends Action implements ShouldTransact
-{
-    public function handle() {
-        ...
-    }
-}
-```
-
-When an Action is implemeting `Fls\Actions\Concerns\ShouldTransact`, the whole `handle` method would be wrapped in a `DB::transaction()` closure.
-
-
 ### Action::tap($value, $closure)
 
-The method is similar to `tap()`: will return the `$value` after passing it to the `$closure`, wrapped it a `DB::transaction()`.
+The protected method is similar to `tap()`: will return the `$value` after passing it to the `$closure`.
 
 ```php
-return $this->tap(User::first(), fn($user) => $user->delete());
+return $this->tap(User::first(), fn(User $user) => $user->delete());
 ```
-is the equivalient of
+is the equivalent of
 ```php
+
 $user = User::first();
 
-DB::transaction(function() {use $user} {
-    $user->delete();
-});
+$user->delete();
 
 return $user;
 
@@ -57,18 +41,16 @@ return $user;
 
 ### Action::pipe($value, $closure)
 
-Similar to `pipe()`, it will return thr result `$value` after running the `$closure`; closure is free to modify the $value.
+Similar to `pipe()`, this protected method will return the result `$value` after running the `$closure`; closure is free to modify the `$value`.
 
 ```php
 return $this->pipe(User::first(), fn($user) => $user->delete());
 ```
-is the equivalient of
+is the equivalent of
 ```php
 $user = User::first();
 
-return DB::transaction(function() {use $user} {
-    return $user->delete();
-});
+return $user->delete();
 
 // true;
 ```
@@ -108,7 +90,7 @@ UserAction::run([
 
 ### Action::validate()
 
-This methid will validate the attribute, throw an exception is data is not valid, but the return value is the class itself; good for chaining.
+This method will validate the attribute, throw an exception is data is not valid, but the return value is the class itself; good for chaining.
 
 ```php
 use Fls\Actions\Action;
@@ -125,6 +107,27 @@ class UserAction extends Action
 ```
 
 Could be useful if you need to make sure validation is complete before chaining-in another action.
+
+### Action::runInTransaction(...$attributes)
+
+This method will wrap the action in a DB transaction.
+
+```php
+
+use Fls\Actions\Action;
+use App\User;
+
+class CreateUserAction extends Action
+{
+    public function handle(User $user, $attributes) 
+    {
+        return $user->create($attributes);
+    }
+}
+```
+
+and can be executed using `run` and `runInTransaction` alike. In the latter case, the action will be executed inside a `DB::transaction`. 
+Return value would match between the two. 
 
 ## Change log
 

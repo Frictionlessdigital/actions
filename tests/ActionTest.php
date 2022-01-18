@@ -1,25 +1,18 @@
 <?php
 
-namespace Fls\Actions\Tests;
+namespace Tests;
 
-use Fls\Actions\Tests\Dummy\DummyActionPipe;
-use Fls\Actions\Tests\Dummy\DummyActionShouldTransact;
-use Fls\Actions\Tests\Dummy\DummyActionTap;
-use Fls\Actions\Tests\Dummy\DummyActionValidate;
-use Fls\Actions\Tests\Dummy\DummyActionValidated;
+use Tests\Fixtures\DummyActionPipe;
+use Tests\Fixtures\DummyActionShouldTransact;
+use Tests\Fixtures\DummyActionTap;
+use Tests\Fixtures\DummyActionValidate;
+use Tests\Fixtures\DummyActionValidated;
 
 class ActionTest extends TestCase
 {
     /** @test */
     public function it_will_return_validated_data()
     {
-        DummyActionValidated::mock()
-            ->shouldReceive('handle')
-            ->with([
-                'name' => 'John',
-            ])
-            ->andReturn(['John']);
-
         $attributes = ['name' => 'John'];
 
         $result = DummyActionValidated::run($attributes);
@@ -30,13 +23,6 @@ class ActionTest extends TestCase
     /** @test */
     public function it_will_validate_and_return_instance()
     {
-        DummyActionValidate::mock()
-            ->shouldReceive('handle')
-            ->with([
-                'name' => 'John',
-            ])
-            ->andReturn(DummyActionValidate::make());
-
         $attributes = ['name' => 'John'];
 
         $class = DummyActionValidate::make()->fill($attributes);
@@ -47,29 +33,38 @@ class ActionTest extends TestCase
     }
 
     /** @test */
-    public function it_will_transact_and_return_value()
+    public function it_will_tap_value_and_return_value()
     {
         $attributes = ['name' => 'John'];
+
         $result = DummyActionTap::run($attributes);
-        $this->assertEquals($result, $result);
+
+        $this->assertEquals($attributes, $result);
     }
 
     /** @test */
-    public function it_will_transact_and_return_closure_result()
+    public function it_will_pipe_value_and_return_closure_result()
     {
         $attributes = ['name' => 'John'];
+
         $result = DummyActionPipe::run($attributes);
+
         $this->assertEquals($result, [
             'name' => 'Jill',
         ]);
     }
 
     /** @test */
-    public function it_will_wrap_handle_in_transaction()
+    public function it_will_run_in_transaction()
     {
         $attributes = ['name' => 'John'];
+
+        $resultInTransaction = DummyActionShouldTransact::runInTransaction($attributes);
+
+        $this->assertEquals($attributes, $resultInTransaction);
+
         $result = DummyActionShouldTransact::run($attributes);
 
-        $this->assertEquals($result, $result);
+        $this->assertEquals($resultInTransaction, $result);
     }
 }

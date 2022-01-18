@@ -1,6 +1,6 @@
 <?php
 
-namespace Fls\Actions\Tests\Dummy;
+namespace Tests\Fixtures;
 
 use Fls\Actions\Action;
 
@@ -14,7 +14,7 @@ class DummyActionValidated extends Action
     }
 
     /**
-     * @param  array $attributes
+     * @param array $attributes
      * @return array
      */
     public function handle(array $attributes): array

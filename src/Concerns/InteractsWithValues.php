@@ -2,9 +2,7 @@
 
 namespace Fls\Actions\Concerns;
 
-use Illuminate\Support\Facades\DB;
-
-trait InteractsWithDatabase
+trait InteractsWithValues
 {
     /**
      * Tap the argument with a callback.
@@ -15,9 +13,7 @@ trait InteractsWithDatabase
      */
     protected function tap($value, callable $callback)
     {
-        DB::transaction(fn () => $callback($value));
-
-        return $value;
+        return tap($value, fn () => $callback($value));
     }
 
     /**
@@ -29,6 +25,6 @@ trait InteractsWithDatabase
      */
     protected function pipe($value, callable $callback)
     {
-        return DB::transaction(fn () => $callback($value));
+        return $callback($value);
     }
 }

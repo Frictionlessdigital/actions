@@ -1,16 +1,16 @@
 {
     "name": "frictionlessdigital/actions",
-    "type": "project",
     "description": "Frictionless Solutions | Actions",
+    "license": "MIT",
+    "type": "project",
     "keywords": [
         "actions",
         "fls",
         "laravel"
     ],
-    "license": "MIT",
     "require": {
-        "php": "^7.3 || ^8.0",
-        "illuminate/support": "^8.0",
+        "php": "^7.4 || ^8.0",
+        "illuminate/support": "^8.0 || ^9.0",
         "lorisleiva/laravel-actions": "^2.0"
     },
     "require-dev": {
@@ -22,14 +22,8 @@
         "phpunit/php-code-coverage": "^9.2",
         "phpunit/phpunit": "^9.3.3"
     },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "extra": {
-        "dev-master": "1.0-dev"
-    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Fls\\Actions\\": "src/"
@@ -37,14 +31,20 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Fls\\Actions\\Tests\\": "tests/"
+            "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "dev-master": "9.x-dev"
+    },
     "scripts": {
-        "analyze": "./vendor/bin/phpstan analyse src tests --memory-limit=2G",
-        "coverage": "./vendor/bin/phpunit --coverage-html coverage",
+        "analyze": "./vendor/bin/phpstan analyse src --memory-limit=2G",
+        "coverage": "XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html coverage -d pcov.enabled",
         "fix": "./vendor/bin/php-cs-fixer --verbose --show-progress=dots fix",
         "test": "./vendor/bin/phpunit --color=always -vvv"
     }

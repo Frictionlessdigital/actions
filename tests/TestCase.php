@@ -1,11 +1,11 @@
 <?php
 
-namespace Fls\Actions\Tests;
+namespace Tests;
 
-use Throwable;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Foundation\Exceptions\Handler;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
+use Throwable;
 
 abstract class TestCase extends OrchestraTestCase
 {
