@@ -1,18 +1,18 @@
 <?php
 
-namespace Fls\Actions\Tests\Dummy;
+namespace Tests\Fixtures;
 
 use Fls\Actions\Action;
 
-class DummyActionTap extends Action
+class DummyActionPipe extends Action
 {
     /**
-     * @param  array $attributes
+     * @param array $attributes
      * @return array
      */
     public function handle(array $attributes): array
     {
-        return $this->tap($attributes, fn ($attributes) => [
+        return $this->pipe($attributes, fn ($attributes) => [
             'name' => 'Jill',
         ]);
     }

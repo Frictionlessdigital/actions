@@ -1,14 +1,13 @@
 <?php
 
-namespace Fls\Actions\Tests\Dummy;
+namespace Tests\Fixtures;
 
 use Fls\Actions\Action;
-use Fls\Actions\Contracts\ShouldTransact;
 
-class DummyActionShouldTransact extends Action implements ShouldTransact
+class DummyActionTap extends Action
 {
     /**
-     * @param  array $attributes
+     * @param array $attributes
      * @return array
      */
     public function handle(array $attributes): array
