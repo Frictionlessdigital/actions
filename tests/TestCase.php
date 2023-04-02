@@ -5,7 +5,6 @@ namespace Tests;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Foundation\Exceptions\Handler;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Throwable;
 
 abstract class TestCase extends OrchestraTestCase
 {
@@ -45,11 +44,11 @@ abstract class TestCase extends OrchestraTestCase
             {
             }
 
-            public function report(Throwable $e)
+            public function report(\Throwable $e)
             {
             }
 
-            public function render($request, Throwable $exception)
+            public function render($request, \Throwable $exception)
             {
                 throw $exception;
             }
