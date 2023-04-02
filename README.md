@@ -2,7 +2,7 @@
 
 Based on phenomenal [Loris Leiva](https://lorisleiva.com/) [Actions for Laravel](https://laravelactions.com/), this package is just a wrapper with a few methods added to sugar-syntax it.
 
-This is for version 9.x and above, which is NOT directly compatible with 1.x. 
+This is for version 10.x and above, which is NOT directly compatible with 1.x. 
 
 ## Installation
 
