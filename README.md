@@ -7,7 +7,7 @@ This is for version 10.x and above, which is NOT directly compatible with 1.x.
 ## Installation
 
 ```bash
-composer require "frictionlessdigital/actions":"^9.0"
+composer require frictionlessdigital/actions
 ```
 
 **Note that root namespace for the package is `Fls` not `Frictionlessditial`.**
@@ -57,7 +57,7 @@ return $user->delete();
 
 ### Action::validated()
 
-This is an alias for `validateAttributes()` - returns an array of attributes validated througn `rules()`.
+This is an alias for `validateAttributes()` - returns an array of attributes validated through `rules()`.
 
 ```php
 use Fls\Actions\Action;

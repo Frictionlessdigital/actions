@@ -38,6 +38,6 @@
         "dev-master": "11.x-dev"
     },
     "scripts": {
-        "test": "./vendor/bin/phpunit --color=always -vvv"
+        "test": "./vendor/bin/phpunit"
     }
 }
