@@ -14,8 +14,6 @@
         "lorisleiva/laravel-actions": "^2.0"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.9.1",
-        "mockery/mockery": "^1.4.2",
         "orchestra/testbench": "^9.0",
         "phpunit/phpunit": "^10.0"
     },
@@ -40,9 +38,6 @@
         "dev-master": "11.x-dev"
     },
     "scripts": {
-        "analyze": "./vendor/bin/phpstan analyse src --memory-limit=2G",
-        "coverage": "XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html coverage -d pcov.enabled",
-        "fix": "./vendor/bin/php-cs-fixer --verbose --show-progress=dots fix",
         "test": "./vendor/bin/phpunit --color=always -vvv"
     }
 }
