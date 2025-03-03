@@ -17,8 +17,6 @@
         "orchestra/testbench": "^9.0|^10.0",
         "phpunit/phpunit": "^10.0|^11.0"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Fls\\Actions\\": "src/"
@@ -29,15 +27,17 @@
             "Tests\\": "tests/"
         }
     },
+    "scripts": {
+        "test": "./vendor/bin/phpunit"
+    },
     "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
         "sort-packages": true
     },
     "extra": {
-        "dev-master": "11.x-dev"
+        "branch-alias": {
+            "dev-master": "11.x-dev"
+        }
     },
-    "scripts": {
-        "test": "./vendor/bin/phpunit"
-    }
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
