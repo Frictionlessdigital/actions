@@ -4,6 +4,16 @@ All notable changes to `frictionlessdigital\actions` will be documented in this 
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## v12.2 | Clean up - 2026-07-24
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 by @dependabot[bot] in https://github.com/Frictionlessdigital/actions/pull/18
+* Bump actions/checkout from 4 to 6 by @dependabot[bot] in https://github.com/Frictionlessdigital/actions/pull/12
+* Bump stefanzweifel/git-auto-commit-action from 5 to 7 by @dependabot[bot] in https://github.com/Frictionlessdigital/actions/pull/11
+
+**Full Changelog**: https://github.com/Frictionlessdigital/actions/compare/12.1.0...12.2.0
+
 ## v12.1 | Laravel 13 - 2026-07-24
 
 ### What's Changed
