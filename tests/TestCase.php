@@ -9,19 +9,11 @@ use Orchestra\Testbench\TestCase as OrchestraTestCase;
 abstract class TestCase extends OrchestraTestCase
 {
     /**
-     * @return void
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-    }
-
-    /**
      * Set up the environment.
      *
      * @param \Illuminate\Foundation\Application $app
      */
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         tap($app['config'], function ($config) {
             $config->set('app.key', 'base64:Hupx3yAySikrM2/edkZQNQHslgDWYfiBfCuSThJ5SK8=');
@@ -34,10 +26,7 @@ abstract class TestCase extends OrchestraTestCase
         });
     }
 
-    /**
-     * @return void
-     */
-    protected function disableExceptionHandling()
+    protected function disableExceptionHandling(): void
     {
         $this->app->instance(ExceptionHandler::class, new class() extends Handler {
             public function __construct()

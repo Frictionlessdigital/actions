@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Tests\Fixtures\DummyActionPipe;
 use Tests\Fixtures\DummyActionShouldTransact;
 use Tests\Fixtures\DummyActionTap;
@@ -10,8 +11,8 @@ use Tests\Fixtures\DummyActionValidated;
 
 class ActionTest extends TestCase
 {
-    /** @test */
-    public function it_will_return_validated_data()
+    #[Test]
+    public function it_will_return_validated_data(): void
     {
         $attributes = ['name' => 'John'];
 
@@ -20,8 +21,8 @@ class ActionTest extends TestCase
         $this->assertEquals($attributes, $result);
     }
 
-    /** @test */
-    public function it_will_validate_and_return_instance()
+    #[Test]
+    public function it_will_validate_and_return_instance(): void
     {
         $attributes = ['name' => 'John'];
 
@@ -32,8 +33,8 @@ class ActionTest extends TestCase
         $this->assertEquals($class, $result);
     }
 
-    /** @test */
-    public function it_will_tap_value_and_return_value()
+    #[Test]
+    public function it_will_tap_value_and_return_value(): void
     {
         $attributes = ['name' => 'John'];
 
@@ -42,8 +43,8 @@ class ActionTest extends TestCase
         $this->assertEquals($attributes, $result);
     }
 
-    /** @test */
-    public function it_will_pipe_value_and_return_closure_result()
+    #[Test]
+    public function it_will_pipe_value_and_return_closure_result(): void
     {
         $attributes = ['name' => 'John'];
 
@@ -54,8 +55,8 @@ class ActionTest extends TestCase
         ]);
     }
 
-    /** @test */
-    public function it_will_run_in_transaction()
+    #[Test]
+    public function it_will_run_in_transaction(): void
     {
         $attributes = ['name' => 'John'];
 
