@@ -4,6 +4,15 @@ All notable changes to `frictionlessdigital\actions` will be documented in this 
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## v12.1 | Laravel 13 - 2026-07-24
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.3.0 to 2.5.0 by @dependabot[bot] in https://github.com/Frictionlessdigital/actions/pull/14
+* Add support for Laravel 13 and PHP 8.3 in CI matrix by @nickfls in https://github.com/Frictionlessdigital/actions/pull/19
+
+**Full Changelog**: https://github.com/Frictionlessdigital/actions/compare/11.2...12.1.0
+
 ## [Unreleased]
 
 ### Added
